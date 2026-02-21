@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { buyBusinessUnit, buyBusinessUpgrade } from '../features/businessSlice';
 import { subtractCash } from '../features/playerSlice';
 import { useTranslation } from '../hooks/useTranslation';
-import { motion } from 'framer-motion';
 import { triggerHaptic } from '../utils/haptics';
 import { Briefcase, Server, Building, Coffee, Car, Truck } from 'lucide-react';
 import clsx from 'clsx';
@@ -77,8 +76,7 @@ export const Business = () => {
                     const currentIncome = calculateIncome(business);
 
                     return (
-                        <motion.div
-                            layout
+                        <div
                             key={business.id}
                             className="bg-neutral-900/60 backdrop-blur-md rounded-xl p-4 border border-neutral-800"
                         >
@@ -159,7 +157,7 @@ export const Business = () => {
                                 </div>
                             </div>
 
-                        </motion.div>
+                        </div>
                     );
                 })}
             </div>

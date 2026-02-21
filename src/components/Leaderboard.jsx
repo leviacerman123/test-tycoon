@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Trophy, Medal, Crown, TrendingUp, Users, RefreshCw } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
-import { syncGameData } from '../services/api';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'https://test-tycoon.onrender.com';
+// VITE_API_URL already includes /api (e.g. http://localhost:5000/api)
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const formatMoney = (num) => {
     if (num >= 1_000_000_000) return `$${(num / 1_000_000_000).toFixed(1)}B`;
@@ -30,7 +30,7 @@ export const Leaderboard = () => {
         setLoading(true);
         setError(null);
         try {
-            const apiUrl = `${API_BASE}/api/user/leaderboard`;
+            const apiUrl = `${API_BASE}/user/leaderboard`;
             const res = await fetch(apiUrl);
             const data = await res.json();
             if (data.success) {
@@ -122,10 +122,10 @@ export const Leaderboard = () => {
                             <div
                                 key={player.rank}
                                 className={`relative overflow-hidden rounded-xl p-4 border transition-all ${i === 0
-                                        ? 'bg-gradient-to-r from-yellow-900/30 to-neutral-900 border-yellow-600/40'
-                                        : i === 1
-                                            ? 'bg-gradient-to-r from-slate-800/40 to-neutral-900 border-slate-600/30'
-                                            : 'bg-gradient-to-r from-amber-900/20 to-neutral-900 border-amber-700/30'
+                                    ? 'bg-gradient-to-r from-yellow-900/30 to-neutral-900 border-yellow-600/40'
+                                    : i === 1
+                                        ? 'bg-gradient-to-r from-slate-800/40 to-neutral-900 border-slate-600/30'
+                                        : 'bg-gradient-to-r from-amber-900/20 to-neutral-900 border-amber-700/30'
                                     }`}
                             >
                                 {i === 0 && (
