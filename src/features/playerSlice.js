@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    cash: 10000000,
+    cash: 1000,
     reputation: 0,
     investorPoints: 0,
     stats: {

@@ -18,6 +18,7 @@ export const translations = {
         nav_realEstate: "Real Estate",
         nav_crypto: "Crypto",
         nav_profile: "Profile",
+        nav_leaderboard: "Top",
 
         // Terminal
         netWorth: "Net Worth",
@@ -94,6 +95,7 @@ export const translations = {
         nav_realEstate: "Недвиж.",
         nav_crypto: "Крипто",
         nav_profile: "Профиль",
+        nav_leaderboard: "Топ",
 
         // Terminal
         netWorth: "Состояние",

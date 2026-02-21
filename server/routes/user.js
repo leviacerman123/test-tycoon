@@ -54,4 +54,30 @@ router.post('/sync', validateTelegramWebAppData, async (req, res) => {
     }
 });
 
+// GET /api/user/leaderboard — Top 20 players by total earned (public)
+router.get('/leaderboard', async (req, res) => {
+    try {
+        const topPlayers = await User.find()
+            .sort({ 'stats.totalEarned': -1 })
+            .limit(20)
+            .select('username firstName stats.totalEarned cash investorPoints telegramId')
+            .lean();
+
+        const leaderboard = topPlayers.map((player, index) => ({
+            rank: index + 1,
+            name: player.username
+                ? `@${player.username}`
+                : (player.firstName || `Player ${player.telegramId.slice(-4)}`),
+            totalEarned: player.stats?.totalEarned || 0,
+            cash: player.cash || 0,
+            investorPoints: player.investorPoints || 0,
+        }));
+
+        res.json({ success: true, data: leaderboard });
+    } catch (error) {
+        console.error('Leaderboard Error:', error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
 module.exports = router;

@@ -17,6 +17,7 @@ import { Crypto } from './components/Crypto';
 import { Profile } from './components/Profile';
 import { Business } from './components/Business';
 import { SplashScreen } from './components/SplashScreen';
+import { Leaderboard } from './components/Leaderboard';
 
 function App() {
     const dispatch = useDispatch();
@@ -142,6 +143,7 @@ function App() {
                     <Route path="market" element={<Market />} />
                     <Route path="real-estate" element={<RealEstate />} />
                     <Route path="crypto" element={<Crypto />} />
+                    <Route path="leaderboard" element={<Leaderboard />} />
                     <Route path="profile" element={<Profile />} />
                 </Route>
             </Routes>
